@@ -42,9 +42,9 @@
                 <RowDefinition Height="80"></RowDefinition>
             </Grid.RowDefinitions>
             <TextBlock Grid.Row="0" x:Name="info"  FontSize="20" >有效录入时间:30分钟</TextBlock>
-            <Button Grid.Row="1" x:Name="addBtn" >添加</Button>
-            <Button Grid.Row="2" x:Name="modBtn">修改</Button>
-            <Button  Grid.Row="3" x:Name="delBtn">删除</Button>
+            <Button Grid.Row="1" x:Name="addBtn" Click="AddBtn_Click">添加</Button>
+            <Button Grid.Row="2" x:Name="modBtn" Click="modBtn_Click">修改</Button>
+            <Button  Grid.Row="3" x:Name="delBtn" Click="delBtn_Click">删除</Button>
         </Grid>
         
         <DataGrid Grid.Row="1" Grid.Column="1" AutoGenerateColumns="True" x:Name="dataGrid1" ItemsSource="{Binding Path=table1}">

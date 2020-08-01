@@ -17,23 +17,33 @@ using System.Windows.Shapes;
 
 namespace Jiudian
 {
+    public class GlobalData
+    {
+        public int kongweishu = 15;
+    }
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
     public partial class MainWindow : Window
     {
+        GlobalData globalData = new GlobalData();
         public MainWindow()
         {
             InitializeComponent();
 
             this.topButton.exitBtn.Click += exit;
-            this.addBtn.Click += AddBtn_Click;
-            //this.kongweishu.Text = "空位数:15";
+            updateKongweishu();
         }
-
+        private void updateKongweishu()
+        {
+            this.kongweishu.Text = "空位数:" + globalData.kongweishu;
+        }
         private void AddBtn_Click(object sender, RoutedEventArgs e)
         {
-            throw new NotImplementedException();
+            if (globalData.kongweishu == 0) return;
+
+            globalData.kongweishu--;
+            updateKongweishu();
         }
 
         void ConnectDB()
@@ -54,6 +64,18 @@ namespace Jiudian
         {
             this.topButton.infoTextBox.Text = "aaaaa"+DateTime.Now.ToString();
             ConnectDB();
+
+        }
+
+        private void delBtn_Click(object sender, RoutedEventArgs e)
+        {
+            
+            globalData.kongweishu++;
+            updateKongweishu();
+        }
+
+        private void modBtn_Click(object sender, RoutedEventArgs e)
+        {
 
         }
     }
