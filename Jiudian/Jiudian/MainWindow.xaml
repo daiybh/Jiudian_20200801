@@ -6,7 +6,45 @@
         xmlns:local="clr-namespace:Jiudian"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
-    <Grid>
+    
+    <Grid ShowGridLines="True">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="200" />
+            <ColumnDefinition  />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="100"></RowDefinition>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+        <TextBox Grid.Row="0" Grid.Column="0">hello</TextBox>
+        <local:topButton Grid.Column="1" Grid.Row="0"></local:topButton>
+        <local:leftButtons Grid.Column="0" Grid.Row="1"></local:leftButtons>
+        <DataGrid Grid.Row="1" Grid.Column="1">
 
+            <DataGrid.Columns>
+                <DataGridTextColumn
+                    Width="Auto"
+                    MinWidth="50"
+                    Binding="{Binding Id}"
+                    Header="" />
+                <DataGridTextColumn
+                    Width="*"
+                    Binding="{Binding WareHouseName}"
+                    Header="仓体名称" />
+                <DataGridTextColumn
+                    Width="*"
+                    Binding="{Binding TypeName}"
+                    Header="数据类型" />
+                <DataGridTextColumn
+                    Width="*"
+                    Binding="{Binding WorkStationData}"
+                    Header="数据值" />
+                <DataGridTextColumn
+                    Width="*"
+                    Binding="{Binding SaveTime, StringFormat='yyyy-MM-dd HH:mm:ss'}"
+                    Header="记录时间" />
+            </DataGrid.Columns>
+
+        </DataGrid>
     </Grid>
 </Window>
