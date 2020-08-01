@@ -6,8 +6,16 @@
         xmlns:local="clr-namespace:Jiudian"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
-    
-    <Grid ShowGridLines="True">
+
+    <Window.Resources>
+        <Style TargetType="Button" >
+            <Setter Property="Foreground"  Value="white"/>
+            <Setter Property="FontSize"   Value="40"></Setter>
+            <Setter Property="Background"  Value="#FF45AFE1"/>
+        </Style>
+    </Window.Resources>
+
+    <Grid ShowGridLines="True" Background="#FF5D5A5A">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="200" />
             <ColumnDefinition  />
@@ -16,11 +24,25 @@
             <RowDefinition Height="100"></RowDefinition>
             <RowDefinition></RowDefinition>
         </Grid.RowDefinitions>
-        <TextBox Grid.Row="0" Grid.Column="0">hello</TextBox>
-        <local:topButton Grid.Column="1" Grid.Row="0"></local:topButton>
-        <local:leftButtons Grid.Column="0" Grid.Row="1"></local:leftButtons>
-        <DataGrid Grid.Row="1" Grid.Column="1">
-
+        <Button Grid.Row="0" Grid.Column="0" x:Name="kongweishu" FontSize="40" FontWeight="Bold" 
+               
+                Foreground="#FFF7F4F4" Background="#FF5D5A5A">空位数:15</Button>
+        <local:topButton   x:Name="topButton" Grid.Column="1" Grid.Row="0"></local:topButton>
+        <Grid  Grid.Column="0" Grid.Row="1" >
+            <Grid.RowDefinitions>
+                <RowDefinition Height="80"></RowDefinition>
+                <RowDefinition Height="80"></RowDefinition>
+                <RowDefinition Height="80"></RowDefinition>
+                <RowDefinition Height="80"></RowDefinition>
+            </Grid.RowDefinitions>
+            <Button  Grid.Row="0" x:Name="info" Foreground="#FFF7F4F4" Background="#FF5D5A5A">有效录入时间:30分钟</Button>
+            <Button Grid.Row="1" x:Name="addBtn" >添加</Button>
+            <Button Grid.Row="2" x:Name="modBtn">修改</Button>
+            <Button  Grid.Row="3" x:Name="delBtn">删除</Button>
+        </Grid>
+        
+        <DataGrid Grid.Row="1" Grid.Column="1" AutoGenerateColumns="True" x:Name="dataGrid1" ItemsSource="{Binding Path=table1}">
+<!--
             <DataGrid.Columns>
                 <DataGridTextColumn
                     Width="Auto"
@@ -44,7 +66,7 @@
                     Binding="{Binding SaveTime, StringFormat='yyyy-MM-dd HH:mm:ss'}"
                     Header="记录时间" />
             </DataGrid.Columns>
-
+-->
         </DataGrid>
     </Grid>
 </Window>
