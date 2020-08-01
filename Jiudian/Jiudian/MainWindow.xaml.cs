@@ -41,7 +41,8 @@ namespace Jiudian
         private void AddBtn_Click(object sender, RoutedEventArgs e)
         {
             if (globalData.kongweishu == 0) return;
-
+            AddDialog ad = new AddDialog();
+            ad.ShowDialog();
             globalData.kongweishu--;
             updateKongweishu();
         }
@@ -52,13 +53,31 @@ namespace Jiudian
 
                        //string sql = "server=JOY;database=VofinePearl;uid=sa;pwd=123456";//连接字符串
             SqlConnection sqlcon = new SqlConnection(sql);//
-            string sql1 = "select parked_id from zk_platelist";
+            string sql1 = "select * from zk_platelist";
             SqlDataAdapter sqlada = new SqlDataAdapter(sql1, sqlcon);
             DataSet ds = new DataSet();
             ds.Clear();
             DataTable table1 = new DataTable();
             sqlada.Fill(ds, "table1");
             dataGrid1.DataContext = ds;
+        }
+        void addDB()
+        {
+            string sql = "Data Source=DESKTOP-HMVR0JT;Initial Catalog=property;User ID=sa;Password=123456";
+
+            //string sql = "server=JOY;database=VofinePearl;uid=sa;pwd=123456";//连接字符串
+            SqlConnection sqlcon = new SqlConnection(sql);//
+                                                          // string sql1 = "select parked_id from zk_platelist";
+                                                          // SqlDataAdapter sqlada = new SqlDataAdapter(sql1, sqlcon);
+
+            string sqladd = "insert into dbo.zk_platelist(plate,starttime,endtime) values('aaa','','')";
+            sqlcon.Open();
+            //MessageBox.Show("连接数据库成功");
+            //string sqladd = "insert into student(name, password) values ('" + name.Text + "', '" + password.Text + "')";
+            //SqlCommand sqlcmd = new SqlCommand(sqladd, sqlconn);
+            //sqlcmd.ExecuteNonQuery();
+            //MessageBox.Show("插入成功");
+
         }
         private void exit(object sender, RoutedEventArgs e)
         {

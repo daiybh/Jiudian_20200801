@@ -7,6 +7,9 @@
     </ApplicationDefinition>
   </ItemGroup>
   <ItemGroup>
+    <Compile Update="addDialog.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="topButton.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -17,6 +20,9 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <Page Update="addDialog.xaml">
+      <SubType>Designer</SubType>
+    </Page>
     <Page Update="MainWindow.xaml">
       <SubType>Designer</SubType>
     </Page>

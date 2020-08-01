@@ -8,6 +8,11 @@
 
   <ItemGroup>
     <PackageReference Include="System.Data.SqlClient" Version="4.8.1" />
+    <PackageReference Include="System.Drawing.Common" Version="4.7.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\DateTimePicker\Utility.Tool.Controls\Utility.Tool.Controls.csproj" />
   </ItemGroup>
 
   <ItemGroup>
