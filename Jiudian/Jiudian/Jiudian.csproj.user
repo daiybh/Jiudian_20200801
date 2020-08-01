@@ -15,6 +15,11 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <None Update="propertyDataSet.xsd">
+      <SubType>Designer</SubType>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
     <Page Update="leftButtons.xaml">
       <SubType>Designer</SubType>
     </Page>
