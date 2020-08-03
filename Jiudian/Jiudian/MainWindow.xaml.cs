@@ -1,5 +1,8 @@
-﻿using System;
+﻿using IniParser;
+using IniParser.Model;
+using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
 using System.Globalization;
@@ -21,6 +24,42 @@ namespace Jiudian
     public class GlobalData
     {
         public int kongweishu = 15;
+        public string sqlConnectStr = "Data Source=192.168.0.243,1439;Initial Catalog=property;User ID=sa;Password=123456";
+
+        public GlobalData()
+        {
+            string str = System.AppDomain.CurrentDomain.SetupInformation.ApplicationBase;
+            string configFilePath = str+"Config.ini";
+            {
+                //write
+                var parser1 = new FileIniDataParser();
+                IniData data1 = new IniData();
+                data1["GENERAL_CONFIG"]["MaxCount"] = "15";
+                data1["DB"]["source"] = "192.168.0.243,1439";
+                data1["DB"]["user"] = "sa";
+                data1["DB"]["pwd"] = "123456";
+
+                parser1.WriteFile(configFilePath, data1);
+
+
+            }
+
+            var parser = new FileIniDataParser();
+            IniData data = parser.ReadFile(configFilePath);
+
+            try
+            {
+                kongweishu = Int32.Parse(data["GENERAL_CONFIG"]["MaxCount"]);
+                sqlConnectStr = String.Format("Data Source={0};Initial Catalog=property;User ID={1};Password={2}",
+                    data["DB"]["source"],
+                    data["DB"]["user"],
+                    data["DB"]["pwd"]);
+            }
+            catch (Exception e)
+            {
+                kongweishu = 15;
+            }
+        }
     }
     /// <summary>
     /// Interaction logic for MainWindow.xaml
@@ -30,25 +69,22 @@ namespace Jiudian
         GlobalData globalData = new GlobalData();
         public MainWindow()
         {
-            
-            
+
+
             //8/3/2020 10:27:17 AM"
 
             InitializeComponent();
 
             this.topButton.exitBtn.Click += exit;
-            {
-                string sqlConnectStr = "Data Source=192.168.0.243,1439;Initial Catalog=property;User ID=sa;Password=123456";
 
-                sqlCon = new SqlConnection(sqlConnectStr);//
-                sqlCon.Open();
-            }
+            sqlCon = new SqlConnection(globalData.sqlConnectStr);//
+            sqlCon.Open();
             ConnectDB();
             updateKongweishu();
 
             dataGrid1.SelectedIndex = 1;
-            
-           
+
+
         }
         private void updateKongweishu()
         {
@@ -62,8 +98,8 @@ namespace Jiudian
             ad.ShowDialog();
             if (ad.bSavebtn)
             {
-               
-                addDB(ad.chepaihao.Text, ad.kaishiSHijian.DateTime.ToString(),ad.jiesuSHijian.DateTime.ToString());
+
+                addDB(ad.chepaihao.Text, ad.kaishiSHijian.DateTime.ToString(), ad.jiesuSHijian.DateTime.ToString());
             }
 
             updateKongweishu();
@@ -81,20 +117,20 @@ namespace Jiudian
             dataSet.Clear();
             sqlada.Fill(dataSet, "table1");
             dataGrid1.DataContext = dataSet;
-            
+
         }
-        void addDB(string plate,string startTime,string endtime)
+        void addDB(string plate, string startTime, string endtime)
         {
-            string sqladd = "insert into dbo.zk_platelist(plate,starttime,endtime) values('"+plate+"','"+startTime+"','"+endtime+"')";
+            string sqladd = "insert into dbo.zk_platelist(plate,starttime,endtime) values('" + plate + "','" + startTime + "','" + endtime + "')";
             SqlCommand sqlcmd = new SqlCommand(sqladd, sqlCon);
             sqlcmd.ExecuteNonQuery();
             //MessageBox.Show("插入成功");
             ConnectDB();
         }
-        void updateDB(string id,string plate, string startTime, string endtime)
+        void updateDB(string id, string plate, string startTime, string endtime)
         {
-            string sqlUpdate = "UPDATE dbo.zk_platelist set plate='"+ plate + "',starttime='"+startTime+"',endtime='"+endtime+ "' where [list_id]="+id;
-            
+            string sqlUpdate = "UPDATE dbo.zk_platelist set plate='" + plate + "',starttime='" + startTime + "',endtime='" + endtime + "' where [list_id]=" + id;
+
             SqlCommand sqlcmd = new SqlCommand(sqlUpdate, sqlCon);
             sqlcmd.ExecuteNonQuery();
             //MessageBox.Show("插入成功");
@@ -126,16 +162,16 @@ GO*/
             var rr = dataGrid1.SelectedIndex;
             if (rr == -1) return;
             string listID = (dataGrid1.Columns[0].GetCellContent(dataGrid1.Items[rr]) as TextBlock).Text;
-            deleteDB(listID);            
+            deleteDB(listID);
             updateKongweishu();
         }
 
         private void modBtn_Click(object sender, RoutedEventArgs e)
         {
-            
+
             var rr = dataGrid1.SelectedIndex;
             if (rr == -1) return;
- 
+
             string listID = (dataGrid1.Columns[0].GetCellContent(dataGrid1.Items[rr]) as TextBlock).Text;
             string plateNO = (dataGrid1.Columns[1].GetCellContent(dataGrid1.Items[rr]) as TextBlock).Text;
             string strstartTime = (dataGrid1.Columns[2].GetCellContent(dataGrid1.Items[rr]) as TextBlock).Text;
@@ -145,13 +181,13 @@ GO*/
             addDialog.chepaihao.Text = plateNO;
 
             //8/3/2020 10:27:17 AM"
-            
-            addDialog.kaishiSHijian.DateTime = DateTime.ParseExact(strstartTime, "yyyy-MM-dd HH:mm:ss",null);
+
+            addDialog.kaishiSHijian.DateTime = DateTime.ParseExact(strstartTime, "yyyy-MM-dd HH:mm:ss", null);
             addDialog.jiesuSHijian.DateTime = DateTime.ParseExact(strendTime, "yyyy-MM-dd HH:mm:ss", null);
 
             addDialog.ShowDialog();
             if (!addDialog.bSavebtn) return;
-            updateDB(listID, addDialog.chepaihao.Text, addDialog.kaishiSHijian.DateTime.ToString(),addDialog.jiesuSHijian.DateTime.ToString());
+            updateDB(listID, addDialog.chepaihao.Text, addDialog.kaishiSHijian.DateTime.ToString(), addDialog.jiesuSHijian.DateTime.ToString());
 
         }
     }
