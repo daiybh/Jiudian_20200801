@@ -14,6 +14,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\DateTimePicker\Utility.Tool.Controls\Utility.Tool.Controls.csproj" />
+    <ProjectReference Include="..\PlateNumberInput\PlateNumberInput.csproj" />
   </ItemGroup>
 
   <ItemGroup>

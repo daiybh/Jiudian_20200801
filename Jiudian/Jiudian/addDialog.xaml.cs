@@ -21,10 +21,12 @@ namespace Jiudian
     public partial class AddDialog : Window
     {
         public bool bSavebtn = false;
-        
+        private List<string> strDic = new List<string>() { "A", "B", "C", "D", "E", "F", "G", "H", "J", "K", "L", "M", "N", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y" };
         public AddDialog()
         {
             InitializeComponent();
+           // this.prov.ItemsSource = strProvice;
+           // this.dic.ItemsSource = strDic;
             
         }
         public static bool IsVehicleNumber(string vehicleNumber)
@@ -43,7 +45,7 @@ namespace Jiudian
             return result;
         }
 
-        private List<string> str1 = new List<string>() { "京", "津", "冀", "晋", "蒙", "辽", "吉",
+        private List<string> strProvice = new List<string>() { "京", "津", "冀", "晋", "蒙", "辽", "吉",
 "黑", "沪", "苏", "浙du", "皖", "闽", "赣", "鲁", "豫", "鄂", "湘", "粤", "桂", "琼", "渝", "川", "贵", "云", "藏", "陕zhi", "甘", "青", "宁", "新", "学" };
        
         private void saveBtn_Click(object sender, RoutedEventArgs e)

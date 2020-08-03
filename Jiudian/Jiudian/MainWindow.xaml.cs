@@ -70,7 +70,7 @@ namespace Jiudian
         public MainWindow()
         {
             //8/3/2020 10:27:17 AM"
-
+            
             InitializeComponent();
 
             this.topButton.exitBtn.Click += exit;
