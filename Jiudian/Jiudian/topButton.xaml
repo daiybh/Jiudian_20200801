@@ -28,8 +28,16 @@
             <ColumnDefinition />
             <ColumnDefinition />
         </Grid.ColumnDefinitions>
-        <TextBlock Grid.Row="0" Name="infoTextBox" HorizontalAlignment="Center" VerticalAlignment="Center" >kkk</TextBlock>
-        <Button Grid.Column="1" x:Name="exitBtn" >Exit</Button>
-        <Button Grid.Column="2" x:Name="minBtn">Min</Button>
+        <Grid Grid.Row="0" Background="Red">
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <TextBox Grid.Row="0" x:Name="searchTextBox"  ></TextBox>
+            <Button  Grid.Row="1" x:Name="searchBtn">查询</Button>
+
+        </Grid>
+        <Button Grid.Column="1" x:Name="exitBtn" >退出</Button>
+        <Button Grid.Column="2" x:Name="minBtn">最小化</Button>
     </Grid>
 </UserControl>

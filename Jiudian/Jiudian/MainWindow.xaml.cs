@@ -69,13 +69,13 @@ namespace Jiudian
         GlobalData globalData = new GlobalData();
         public MainWindow()
         {
-
-
             //8/3/2020 10:27:17 AM"
 
             InitializeComponent();
 
             this.topButton.exitBtn.Click += exit;
+            this.topButton.minBtn.Click += MinBtn_Click;
+            this.topButton.searchBtn.Click += SearchBtn_Click;
 
             sqlCon = new SqlConnection(globalData.sqlConnectStr);//
             sqlCon.Open();
@@ -86,6 +86,18 @@ namespace Jiudian
 
 
         }
+
+        private void SearchBtn_Click(object sender, RoutedEventArgs e)
+        {
+            string s = this.topButton.searchTextBox.Text;
+            ConnectDB(s);
+        }
+
+        private void MinBtn_Click(object sender, RoutedEventArgs e)
+        {
+            this.WindowState = WindowState.Minimized;
+        }
+
         private void updateKongweishu()
         {
             globalData.kongweishu -= dataSet.Tables.Count;
@@ -109,9 +121,13 @@ namespace Jiudian
         SqlConnection sqlCon;
         DataSet dataSet = new DataSet();
 
-        void ConnectDB()
+        void ConnectDB(string searchKey="")
         {
             string sql1 = "select [list_id] as Id,[plate] as 车牌号,[starttime] as 开始时间,[endtime] as 结束时间 from zk_platelist";
+            if(searchKey!="")
+            {
+                sql1 += " where plate like '%" + searchKey + "%'";
+            }
             SqlDataAdapter sqlada = new SqlDataAdapter(sql1, sqlCon);
 
             dataSet.Clear();
@@ -152,9 +168,7 @@ GO*/
 
         private void exit(object sender, RoutedEventArgs e)
         {
-            this.topButton.infoTextBox.Text = "aaaaa" + DateTime.Now.ToString();
-            ConnectDB();
-
+            this.Close();
         }
 
         private void delBtn_Click(object sender, RoutedEventArgs e)
