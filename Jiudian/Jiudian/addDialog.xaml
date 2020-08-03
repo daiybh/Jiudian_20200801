@@ -64,7 +64,7 @@
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
             <Button x:Name="saveBtn" Click="saveBtn_Click">保存</Button>
-            <Button x:Name="cancleBtn" Grid.Column="1">取消</Button>
+            <Button x:Name="cancleBtn" Grid.Column="1" Click="cancleBtn_Click">取消</Button>
         </Grid>
     </Grid>
 </Window>

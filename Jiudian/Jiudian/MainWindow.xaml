@@ -47,8 +47,8 @@
             <Button  Grid.Row="3" x:Name="delBtn" Click="delBtn_Click">删除</Button>
         </Grid>
         
-        <DataGrid Grid.Row="1" Grid.Column="1" AutoGenerateColumns="True" x:Name="dataGrid1" ItemsSource="{Binding Path=table1}">
-<!--
+        <DataGrid Grid.Row="1" Grid.Column="1" AutoGenerateColumns="false" IsReadOnly="true" x:Name="dataGrid1" ItemsSource="{Binding Path=table1}">
+
             <DataGrid.Columns>
                 <DataGridTextColumn
                     Width="Auto"
@@ -57,22 +57,18 @@
                     Header="" />
                 <DataGridTextColumn
                     Width="*"
-                    Binding="{Binding WareHouseName}"
+                    Binding="{Binding 车牌号}"
                     Header="仓体名称" />
                 <DataGridTextColumn
                     Width="*"
-                    Binding="{Binding TypeName}"
-                    Header="数据类型" />
+                    Binding="{Binding 开始时间, StringFormat='yyyy-MM-dd HH:mm:ss'}"
+                    Header="记录时间" />
                 <DataGridTextColumn
                     Width="*"
-                    Binding="{Binding WorkStationData}"
-                    Header="数据值" />
-                <DataGridTextColumn
-                    Width="*"
-                    Binding="{Binding SaveTime, StringFormat='yyyy-MM-dd HH:mm:ss'}"
+                    Binding="{Binding 结束时间, StringFormat='yyyy-MM-dd HH:mm:ss'}"
                     Header="记录时间" />
             </DataGrid.Columns>
--->
+
         </DataGrid>
     </Grid>
 </Window>

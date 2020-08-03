@@ -19,6 +19,7 @@ namespace Jiudian
     /// </summary>
     public partial class AddDialog : Window
     {
+        public bool bSavebtn = false;
         public AddDialog()
         {
             InitializeComponent();
@@ -27,7 +28,17 @@ namespace Jiudian
         private void saveBtn_Click(object sender, RoutedEventArgs e)
         {
             zk_platelistTableAdapter helper = new zk_platelistTableAdapter();
-          //  helper.Update()
+            //  helper.Update()
+            bSavebtn = true;
+            this.Close();
+        }
+
+        private void cancleBtn_Click(object sender, RoutedEventArgs e)
+        {
+            //   bSavebtn = false;
+            //  this.Close();
+
+            this.jiesuSHijian.DateTime = DateTime.Now;
         }
     }
 }

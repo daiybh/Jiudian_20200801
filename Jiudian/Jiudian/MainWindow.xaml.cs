@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -29,10 +30,25 @@ namespace Jiudian
         GlobalData globalData = new GlobalData();
         public MainWindow()
         {
+            
+            
+            //8/3/2020 10:27:17 AM"
+
             InitializeComponent();
 
             this.topButton.exitBtn.Click += exit;
+            {
+                string sqlConnectStr = "Data Source=192.168.0.243,1439;Initial Catalog=property;User ID=sa;Password=123456";
+
+                sqlCon = new SqlConnection(sqlConnectStr);//
+                sqlCon.Open();
+            }
+            ConnectDB();
             updateKongweishu();
+
+            dataGrid1.SelectedIndex = 1;
+            
+           
         }
         private void updateKongweishu()
         {
@@ -43,59 +59,72 @@ namespace Jiudian
             if (globalData.kongweishu == 0) return;
             AddDialog ad = new AddDialog();
             ad.ShowDialog();
-            globalData.kongweishu--;
+            if (ad.bSavebtn)
+            {
+                globalData.kongweishu--;
+                addDB(ad.chepaihao.Text, ad.kaishiSHijian.DateTime.ToString(),ad.jiesuSHijian.DateTime.ToString());
+            }
+
             updateKongweishu();
         }
 
+
+        SqlConnection sqlCon;
+        DataSet dataSet = new DataSet();
+
         void ConnectDB()
         {
-            string sql = "Data Source=DESKTOP-HMVR0JT;Initial Catalog=property;User ID=sa;Password=123456";
+            string sql1 = "select [list_id] as id,[plate] as 车牌号,[starttime] as 开始时间,[endtime] as 结束时间 from zk_platelist";
+            SqlDataAdapter sqlada = new SqlDataAdapter(sql1, sqlCon);
 
-                       //string sql = "server=JOY;database=VofinePearl;uid=sa;pwd=123456";//连接字符串
-            SqlConnection sqlcon = new SqlConnection(sql);//
-            string sql1 = "select * from zk_platelist";
-            SqlDataAdapter sqlada = new SqlDataAdapter(sql1, sqlcon);
-            DataSet ds = new DataSet();
-            ds.Clear();
-            DataTable table1 = new DataTable();
-            sqlada.Fill(ds, "table1");
-            dataGrid1.DataContext = ds;
+            dataSet.Clear();
+            sqlada.Fill(dataSet, "table1");
+            dataGrid1.DataContext = dataSet;
         }
-        void addDB()
+        void addDB(string plate,string startTime,string endtime)
         {
-            string sql = "Data Source=DESKTOP-HMVR0JT;Initial Catalog=property;User ID=sa;Password=123456";
-
-            //string sql = "server=JOY;database=VofinePearl;uid=sa;pwd=123456";//连接字符串
-            SqlConnection sqlcon = new SqlConnection(sql);//
-                                                          // string sql1 = "select parked_id from zk_platelist";
-                                                          // SqlDataAdapter sqlada = new SqlDataAdapter(sql1, sqlcon);
-
-            string sqladd = "insert into dbo.zk_platelist(plate,starttime,endtime) values('aaa','','')";
-            sqlcon.Open();
-            //MessageBox.Show("连接数据库成功");
-            //string sqladd = "insert into student(name, password) values ('" + name.Text + "', '" + password.Text + "')";
-            //SqlCommand sqlcmd = new SqlCommand(sqladd, sqlconn);
-            //sqlcmd.ExecuteNonQuery();
+            string sqladd = "insert into dbo.zk_platelist(plate,starttime,endtime) values('"+plate+"','"+startTime+"','"+endtime+"')";
+            SqlCommand sqlcmd = new SqlCommand(sqladd, sqlCon);
+            sqlcmd.ExecuteNonQuery();
             //MessageBox.Show("插入成功");
-
+            ConnectDB();
         }
+
+
         private void exit(object sender, RoutedEventArgs e)
         {
-            this.topButton.infoTextBox.Text = "aaaaa"+DateTime.Now.ToString();
+            this.topButton.infoTextBox.Text = "aaaaa" + DateTime.Now.ToString();
             ConnectDB();
 
         }
 
         private void delBtn_Click(object sender, RoutedEventArgs e)
         {
-            
+
             globalData.kongweishu++;
             updateKongweishu();
         }
 
         private void modBtn_Click(object sender, RoutedEventArgs e)
         {
+            
+            var rr = dataGrid1.SelectedIndex;
+            if (rr == -1) return;
+ 
+            string listID = (dataGrid1.Columns[0].GetCellContent(dataGrid1.Items[rr]) as TextBlock).Text;
+            string plateNO = (dataGrid1.Columns[1].GetCellContent(dataGrid1.Items[rr]) as TextBlock).Text;
+            string strstartTime = (dataGrid1.Columns[2].GetCellContent(dataGrid1.Items[rr]) as TextBlock).Text;
+            string strendTime = (dataGrid1.Columns[3].GetCellContent(dataGrid1.Items[rr]) as TextBlock).Text;
 
+            AddDialog addDialog = new AddDialog();
+            addDialog.chepaihao.Text = plateNO;
+
+            //8/3/2020 10:27:17 AM"
+            
+            addDialog.kaishiSHijian.DateTime = DateTime.ParseExact(strstartTime, "yyyy-MM-dd HH:mm:ss",null);
+            addDialog.jiesuSHijian.DateTime = DateTime.ParseExact(strendTime, "yyyy-MM-dd HH:mm:ss", null);
+
+            addDialog.ShowDialog();
         }
     }
 }
