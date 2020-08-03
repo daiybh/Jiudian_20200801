@@ -110,7 +110,6 @@ namespace Jiudian
             ad.ShowDialog();
             if (ad.bSavebtn)
             {
-
                 addDB(ad.chepaihao.Text, ad.kaishiSHijian.DateTime.ToString(), ad.jiesuSHijian.DateTime.ToString());
             }
 
