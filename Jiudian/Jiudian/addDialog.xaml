@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Jiudian" xmlns:my="clr-namespace:Utility.Tool.Controls.View;assembly=Utility.Tool.Controls"
         mc:Ignorable="d"
-        Title="add" Height="220" Width="800" Background="#FF2893FD">
+        Title="add" Height="220" Width="800" Background="#FF45AFE1">
     <Window.Resources>
         <Style TargetType="TextBox"  >
             <Setter Property="Foreground"  Value="black"/>
@@ -17,12 +17,12 @@
 
         <Style TargetType="TextBlock"  x:Key="rTextBlock">
             <Setter Property="Foreground"  Value="white"/>
-            <Setter Property="FontSize"   Value="40"  ></Setter>
+            <Setter Property="FontSize"   Value="30"  ></Setter>
             <Setter Property="HorizontalAlignment"  Value="Center"/>
             <Setter Property="VerticalAlignment"  Value="Center"/>
         </Style>
         <Style TargetType="Button">
-            <Setter Property="Background" Value="#FF2893FD"/>
+            <Setter Property="Background" Value="#FF45AFE1"/>
             <Setter Property="Foreground" Value="Red"/>
             <Setter Property="FontSize"   Value="30"  ></Setter>
         </Style>
