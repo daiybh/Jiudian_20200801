@@ -20,9 +20,11 @@ namespace Jiudian
     public partial class AddDialog : Window
     {
         public bool bSavebtn = false;
+        
         public AddDialog()
         {
             InitializeComponent();
+            
         }
 
         private void saveBtn_Click(object sender, RoutedEventArgs e)
@@ -35,10 +37,10 @@ namespace Jiudian
 
         private void cancleBtn_Click(object sender, RoutedEventArgs e)
         {
-            //   bSavebtn = false;
-            //  this.Close();
+               bSavebtn = false;
+              this.Close();
 
-            this.jiesuSHijian.DateTime = DateTime.Now;
+            
         }
     }
 }

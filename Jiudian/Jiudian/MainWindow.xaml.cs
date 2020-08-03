@@ -52,6 +52,7 @@ namespace Jiudian
         }
         private void updateKongweishu()
         {
+            globalData.kongweishu -= dataSet.Tables.Count;
             this.kongweishu.Text = "空位数:" + globalData.kongweishu;
         }
         private void AddBtn_Click(object sender, RoutedEventArgs e)
@@ -61,7 +62,7 @@ namespace Jiudian
             ad.ShowDialog();
             if (ad.bSavebtn)
             {
-                globalData.kongweishu--;
+               
                 addDB(ad.chepaihao.Text, ad.kaishiSHijian.DateTime.ToString(),ad.jiesuSHijian.DateTime.ToString());
             }
 
@@ -74,17 +75,39 @@ namespace Jiudian
 
         void ConnectDB()
         {
-            string sql1 = "select [list_id] as id,[plate] as 车牌号,[starttime] as 开始时间,[endtime] as 结束时间 from zk_platelist";
+            string sql1 = "select [list_id] as Id,[plate] as 车牌号,[starttime] as 开始时间,[endtime] as 结束时间 from zk_platelist";
             SqlDataAdapter sqlada = new SqlDataAdapter(sql1, sqlCon);
 
             dataSet.Clear();
             sqlada.Fill(dataSet, "table1");
             dataGrid1.DataContext = dataSet;
+            
         }
         void addDB(string plate,string startTime,string endtime)
         {
             string sqladd = "insert into dbo.zk_platelist(plate,starttime,endtime) values('"+plate+"','"+startTime+"','"+endtime+"')";
             SqlCommand sqlcmd = new SqlCommand(sqladd, sqlCon);
+            sqlcmd.ExecuteNonQuery();
+            //MessageBox.Show("插入成功");
+            ConnectDB();
+        }
+        void updateDB(string id,string plate, string startTime, string endtime)
+        {
+            string sqlUpdate = "UPDATE dbo.zk_platelist set plate='"+ plate + "',starttime='"+startTime+"',endtime='"+endtime+ "' where [list_id]="+id;
+            
+            SqlCommand sqlcmd = new SqlCommand(sqlUpdate, sqlCon);
+            sqlcmd.ExecuteNonQuery();
+            //MessageBox.Show("插入成功");
+            ConnectDB();
+        }
+        void deleteDB(string id)
+        {
+            /*DELETE FROM [dbo].[zk_platelist]
+      WHERE <Search Conditions,,>
+GO*/
+            string sqlDel = "DELETE FROM [dbo].[zk_platelist] where [list_id]=" + id;
+
+            SqlCommand sqlcmd = new SqlCommand(sqlDel, sqlCon);
             sqlcmd.ExecuteNonQuery();
             //MessageBox.Show("插入成功");
             ConnectDB();
@@ -100,8 +123,10 @@ namespace Jiudian
 
         private void delBtn_Click(object sender, RoutedEventArgs e)
         {
-
-            globalData.kongweishu++;
+            var rr = dataGrid1.SelectedIndex;
+            if (rr == -1) return;
+            string listID = (dataGrid1.Columns[0].GetCellContent(dataGrid1.Items[rr]) as TextBlock).Text;
+            deleteDB(listID);            
             updateKongweishu();
         }
 
@@ -125,6 +150,9 @@ namespace Jiudian
             addDialog.jiesuSHijian.DateTime = DateTime.ParseExact(strendTime, "yyyy-MM-dd HH:mm:ss", null);
 
             addDialog.ShowDialog();
+            if (!addDialog.bSavebtn) return;
+            updateDB(listID, addDialog.chepaihao.Text, addDialog.kaishiSHijian.DateTime.ToString(),addDialog.jiesuSHijian.DateTime.ToString());
+
         }
     }
 }

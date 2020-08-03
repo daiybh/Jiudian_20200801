@@ -51,10 +51,10 @@
 
             <DataGrid.Columns>
                 <DataGridTextColumn
-                    Width="Auto"
-                    MinWidth="50"
+                    Width="1"
+                    MinWidth="1"
                     Binding="{Binding Id}"
-                    Header="" />
+                    Header="id" />
                 <DataGridTextColumn
                     Width="*"
                     Binding="{Binding 车牌号}"
