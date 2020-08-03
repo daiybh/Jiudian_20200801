@@ -30,7 +30,8 @@ namespace Jiudian
         {
             string str = System.AppDomain.CurrentDomain.SetupInformation.ApplicationBase;
             string configFilePath = str+"Config.ini";
-            {
+
+            if(!System.IO.File.Exists(configFilePath)){
                 //write
                 var parser1 = new FileIniDataParser();
                 IniData data1 = new IniData();
@@ -67,19 +68,29 @@ namespace Jiudian
     public partial class MainWindow : Window
     {
         GlobalData globalData = new GlobalData();
+        
+
         public MainWindow()
         {
             //8/3/2020 10:27:17 AM"
             
             InitializeComponent();
 
+            sqlCon = new SqlConnection(globalData.sqlConnectStr);//
+            try
+            {
+
+                ConnectDB();
+            }catch(Exception ex)
+            {
+                MessageBox.Show("Connect str : "+globalData.sqlConnectStr+"\nOPen sql Failed," + ex.Message.ToString());
+                return;
+            }
+
             this.topButton.exitBtn.Click += exit;
             this.topButton.minBtn.Click += MinBtn_Click;
             this.topButton.searchBtn.Click += SearchBtn_Click;
 
-            sqlCon = new SqlConnection(globalData.sqlConnectStr);//
-            sqlCon.Open();
-            ConnectDB();
             updateKongweishu();
 
             dataGrid1.SelectedIndex = 1;
@@ -122,14 +133,15 @@ namespace Jiudian
 
         void ConnectDB(string searchKey="")
         {
+            dataSet.Clear();
             string sql1 = "select [list_id] as Id,[plate] as 车牌号,[starttime] as 开始时间,[endtime] as 结束时间 from zk_platelist";
             if(searchKey!="")
             {
                 sql1 += " where plate like '%" + searchKey + "%'";
             }
+
             SqlDataAdapter sqlada = new SqlDataAdapter(sql1, sqlCon);
 
-            dataSet.Clear();
             sqlada.Fill(dataSet, "table1");
             dataGrid1.DataContext = dataSet;
 
