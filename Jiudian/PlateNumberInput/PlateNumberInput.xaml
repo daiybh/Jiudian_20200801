@@ -8,12 +8,12 @@
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid>       
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="50"/>
-                <ColumnDefinition Width="50"/>
+                <ColumnDefinition Width="60" />
+                <ColumnDefinition Width="60"/>
                 <ColumnDefinition Width="200"/>
             </Grid.ColumnDefinitions>
-            <ComboBox Grid.Column="0" x:Name="prov" Width="50" HorizontalAlignment="Center" VerticalAlignment="Center" ></ComboBox>
-            <ComboBox Grid.Column="1" x:Name="dic" Width="50" HorizontalAlignment="Center" VerticalAlignment="Center" ></ComboBox>
+            <ComboBox FontSize="40" Grid.Column="0" ItemsSource="abcd" x:Name="prov" Width="60" HorizontalAlignment="Center" VerticalAlignment="Center" ></ComboBox>
+        <ComboBox FontSize="40" Grid.Column="1" x:Name="dic" Width="60" HorizontalAlignment="Center" VerticalAlignment="Center" ></ComboBox>
             <TextBox Width="200"  Grid.Column="2" x:Name="chepaihao" FontSize="40"  Text="123456"/>
     </Grid>
 </UserControl>
