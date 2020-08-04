@@ -15,44 +15,20 @@
     {
         "Entry"
         {
-        "MsmKey" = "8:_57A8367452D74D53BE78B0EE49A36518"
+        "MsmKey" = "8:_5599176B25644EF38C4DC1EFA9F4577D"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
-        "MsmKey" = "8:_586DC71C12F946EBB42DE78234A07662"
-        "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_7A5EA044863A4279B03E61AE49634D17"
-        "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_A89FAB1904CB4AE49636F68FED50F909"
-        "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_B712184968A14E3988399CB03F91ADBB"
+        "MsmKey" = "8:_657A96780D684D5E8F5082D4C6B9AE55"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_586DC71C12F946EBB42DE78234A07662"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_7A5EA044863A4279B03E61AE49634D17"
+        "OwnerKey" = "8:_5599176B25644EF38C4DC1EFA9F4577D"
         "MsmSig" = "8:_UNDEFINED"
         }
     }
@@ -120,7 +96,7 @@
                 {
                 "Name" = "8:.NET Framework"
                 "Message" = "8:[VSDNETMSG]"
-                "FrameworkVersion" = "8:.NETFramework,Version=v4.7.2"
+                "FrameworkVersion" = "8:.NETFramework,Version=v4.0"
                 "AllowLaterVersions" = "11:FALSE"
                 "InstallUrl" = "8:http://go.microsoft.com/fwlink/?LinkId=863262"
                 }
@@ -128,41 +104,10 @@
         }
         "File"
         {
-            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_7A5EA044863A4279B03E61AE49634D17"
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_657A96780D684D5E8F5082D4C6B9AE55"
             {
-            "AssemblyRegister" = "3:1"
-            "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a"
-                "ScatterAssemblies"
-                {
-                    "_7A5EA044863A4279B03E61AE49634D17"
-                    {
-                    "Name" = "8:System.Drawing.dll"
-                    "Attributes" = "3:512"
-                    }
-                }
-            "SourcePath" = "8:C:\\Program Files (x86)\\Reference Assemblies\\Microsoft\\Framework\\.NETFramework\\v4.7.2\\System.Drawing.dll"
-            "TargetName" = "8:"
-            "Tag" = "8:"
-            "Folder" = "8:_6F1C0F42B82948A1929D9829D1C31759"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_B712184968A14E3988399CB03F91ADBB"
-            {
-            "SourcePath" = "8:..\\Jiudian\\bin\\Release\\netcoreapp3.1\\Jiudian.exe"
-            "TargetName" = "8:Jiudian.exe"
+            "SourcePath" = "8:dotNetFx40_Full_x86_x64 (1).exe"
+            "TargetName" = "8:dotNetFx40_Full_x86_x64 (1).exe"
             "Tag" = "8:"
             "Folder" = "8:_6F1C0F42B82948A1929D9829D1C31759"
             "Condition" = "8:"
@@ -236,7 +181,7 @@
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:Setup"
         "ProductCode" = "8:{B9121422-555E-40EE-8F31-0C91A230C7B9}"
-        "PackageCode" = "8:{C62AF0EA-9A1E-47CD-97C7-733958E75C5A}"
+        "PackageCode" = "8:{AF1743FB-398A-4D86-91B4-D5860A7D92D3}"
         "UpgradeCode" = "8:{65E76F4A-8775-4CB7-B993-7276AC80ECED}"
         "AspNetVersion" = "8:"
         "RestartWWWService" = "11:FALSE"
@@ -755,37 +700,9 @@
         }
         "ProjectOutput"
         {
-            "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_138C7C3D73AD41E69B94B0328231ABB4"
+            "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_5599176B25644EF38C4DC1EFA9F4577D"
             {
-            "SourcePath" = "8:"
-            "TargetName" = "8:"
-            "Tag" = "8:"
-            "Folder" = "8:_6F1C0F42B82948A1929D9829D1C31759"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            "ProjectOutputGroupRegister" = "3:1"
-            "OutputConfiguration" = "8:"
-            "OutputGroupCanonicalName" = "8:ReferenceCopyLocalPathsOutputGroup"
-            "OutputProjectGuid" = "8:{3D314B59-9D0A-4B5E-96BD-10121C3A4ED2}"
-            "ShowKeyOutput" = "11:TRUE"
-                "ExcludeFilters"
-                {
-                }
-            }
-            "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_57A8367452D74D53BE78B0EE49A36518"
-            {
-            "SourcePath" = "8:..\\PlateNumberInput\\obj\\Release\\netcoreapp3.1\\PlateNumberInput.dll"
+            "SourcePath" = "8:..\\WpfApp2\\obj\\Release\\WpfApp2.exe"
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_6F1C0F42B82948A1929D9829D1C31759"
@@ -805,63 +722,7 @@
             "ProjectOutputGroupRegister" = "3:1"
             "OutputConfiguration" = "8:"
             "OutputGroupCanonicalName" = "8:Built"
-            "OutputProjectGuid" = "8:{0BB30D44-B255-49CD-BD85-0BE1B2A82046}"
-            "ShowKeyOutput" = "11:TRUE"
-                "ExcludeFilters"
-                {
-                }
-            }
-            "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_586DC71C12F946EBB42DE78234A07662"
-            {
-            "SourcePath" = "8:..\\DateTimePicker\\Utility.Tool.Controls\\obj\\Release\\Utility.Tool.Controls.dll"
-            "TargetName" = "8:"
-            "Tag" = "8:"
-            "Folder" = "8:_6F1C0F42B82948A1929D9829D1C31759"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            "ProjectOutputGroupRegister" = "3:1"
-            "OutputConfiguration" = "8:"
-            "OutputGroupCanonicalName" = "8:Built"
-            "OutputProjectGuid" = "8:{FE90C74A-FA6A-48E2-998F-F5B187009EE2}"
-            "ShowKeyOutput" = "11:TRUE"
-                "ExcludeFilters"
-                {
-                }
-            }
-            "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_A89FAB1904CB4AE49636F68FED50F909"
-            {
-            "SourcePath" = "8:..\\Jiudian\\obj\\Release\\netcoreapp3.1\\Jiudian.dll"
-            "TargetName" = "8:"
-            "Tag" = "8:"
-            "Folder" = "8:_6F1C0F42B82948A1929D9829D1C31759"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            "ProjectOutputGroupRegister" = "3:1"
-            "OutputConfiguration" = "8:"
-            "OutputGroupCanonicalName" = "8:Built"
-            "OutputProjectGuid" = "8:{3D314B59-9D0A-4B5E-96BD-10121C3A4ED2}"
+            "OutputProjectGuid" = "8:{499BAF01-92EA-4C9A-B593-8098C615A77A}"
             "ShowKeyOutput" = "11:TRUE"
                 "ExcludeFilters"
                 {

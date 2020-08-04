@@ -11,6 +11,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PlateNumberInput", "PlateNu
 EndProject
 Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "Setup", "Setup\Setup.vdproj", "{328345A8-406A-4941-B53A-7A4BA2FA1A65}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WpfApp2", "WpfApp2\WpfApp2.csproj", "{499BAF01-92EA-4C9A-B593-8098C615A77A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -67,6 +69,18 @@ Global
 		{328345A8-406A-4941-B53A-7A4BA2FA1A65}.Release|x64.Build.0 = Release
 		{328345A8-406A-4941-B53A-7A4BA2FA1A65}.Release|x86.ActiveCfg = Release
 		{328345A8-406A-4941-B53A-7A4BA2FA1A65}.Release|x86.Build.0 = Release
+		{499BAF01-92EA-4C9A-B593-8098C615A77A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{499BAF01-92EA-4C9A-B593-8098C615A77A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{499BAF01-92EA-4C9A-B593-8098C615A77A}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{499BAF01-92EA-4C9A-B593-8098C615A77A}.Debug|x64.Build.0 = Debug|Any CPU
+		{499BAF01-92EA-4C9A-B593-8098C615A77A}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{499BAF01-92EA-4C9A-B593-8098C615A77A}.Debug|x86.Build.0 = Debug|Any CPU
+		{499BAF01-92EA-4C9A-B593-8098C615A77A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{499BAF01-92EA-4C9A-B593-8098C615A77A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{499BAF01-92EA-4C9A-B593-8098C615A77A}.Release|x64.ActiveCfg = Release|Any CPU
+		{499BAF01-92EA-4C9A-B593-8098C615A77A}.Release|x64.Build.0 = Release|Any CPU
+		{499BAF01-92EA-4C9A-B593-8098C615A77A}.Release|x86.ActiveCfg = Release|Any CPU
+		{499BAF01-92EA-4C9A-B593-8098C615A77A}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
